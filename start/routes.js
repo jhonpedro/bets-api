@@ -22,3 +22,9 @@ Route.group(() => {
 }).prefix('/users')
 
 Route.post('/session', 'SessionController.store').validator('StoreSession')
+
+Route.group(() => {
+  Route.resource('games', 'GameController')
+    .validator(new Map([[['games.store'], ['StoreGame']]]))
+    .apiOnly()
+}).middleware(['auth'])
