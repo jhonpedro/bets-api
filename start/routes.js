@@ -16,6 +16,9 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { bets: 'in progress' }
-})
+Route.group(() => {
+  Route.post('/', 'UserController.store').validator('User')
+  Route.get('/', 'UserController.show').middleware(['auth'])
+}).prefix('/users')
+
+Route.post('/session', 'SessionController.store').validator('Session')
