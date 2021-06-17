@@ -27,7 +27,11 @@ class ExceptionHandler extends BaseExceptionHandler {
     }
 
     if (error.name === 'InvalidJwtToken') {
-      return response.status(400).send([{ message: 'You have to login again' }])
+      return response.status(400).send([{ message: error.message }])
+    }
+
+    if (error.name === 'ModelNotFoundException') {
+      return response.status(404).send([{ message: 'Not found' }])
     }
 
     if (Env.get('NODE_ENV', '') === 'development') {
