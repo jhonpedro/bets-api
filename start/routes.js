@@ -17,8 +17,8 @@
 const Route = use('Route')
 
 Route.group(() => {
-  Route.post('/', 'UserController.store').validator('User')
+  Route.post('/', 'UserController.store').validator('StoreUser')
   Route.get('/', 'UserController.show').middleware(['auth'])
 }).prefix('/users')
 
-Route.post('/session', 'SessionController.store').validator('Session')
+Route.post('/session', 'SessionController.store').validator('StoreSession')
