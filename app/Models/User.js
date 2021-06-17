@@ -19,6 +19,11 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
+    this.addHook('afterCreate', 'NewUserHook.NewUserMail')
+  }
+
+  static get visible() {
+    return ['name', 'email']
   }
 
   /**
