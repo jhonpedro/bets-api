@@ -2,7 +2,6 @@
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/auth/src/Schemes')} Auth */
 
 const User = use('App/Models/User')
 
@@ -30,12 +29,9 @@ class UserController {
    * GET users/:id
    *
    * @param {object} ctx
-   * @param {Auth} ctx.response
    */
   async show({ auth }) {
-    const user = await User.find(auth.jwtPayload.uid)
-
-    return user
+    return auth.user
   }
 }
 
