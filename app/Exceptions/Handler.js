@@ -34,6 +34,10 @@ class ExceptionHandler extends BaseExceptionHandler {
       return response.status(404).send([{ message: 'Not found' }])
     }
 
+    if (error.name === 'PasswordMisMatchException') {
+      return response.status(403).send([{ message: 'Wrong password' }])
+    }
+
     if (Env.get('NODE_ENV', '') === 'development') {
       process.stderr.write(`${error}\n`)
       return response.status(500).send('look the console')
