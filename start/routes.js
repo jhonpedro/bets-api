@@ -24,6 +24,15 @@ Route.group(() => {
 Route.post('/session', 'SessionController.store').validator('StoreSession')
 
 Route.group(() => {
+  Route.post('/', 'ForgotPasswordController.store').validator(
+    'StoreForgotPassword'
+  )
+  Route.put('/', 'ForgotPasswordController.update').validator(
+    'UpdateForgotPassword'
+  )
+}).prefix('forgot-password')
+
+Route.group(() => {
   Route.resource('games', 'GameController')
     .validator(new Map([[['games.store'], ['StoreGame']]]))
     .apiOnly()
@@ -31,4 +40,6 @@ Route.group(() => {
   Route.resource('purchases', 'PurchaseController')
     .only(['store', 'index'])
     .validator(new Map([[['purchases.store'], ['StorePurchase']]]))
+
+  Route.get('/bets', 'BetController.index')
 }).middleware(['auth'])
