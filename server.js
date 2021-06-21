@@ -17,6 +17,13 @@
 |     Make sure to pass a relative path from the project root.
 */
 
+const { spawn } = require('child_process')
+
+const execute = spawn('node', ['./util/execute.js'])
+execute.stdout.on('data', (buffer) =>
+  process.stdout.write(`${buffer.toString()}\n`)
+)
+
 const { Ignitor } = require('@adonisjs/ignitor')
 
 new Ignitor(require('@adonisjs/fold'))
