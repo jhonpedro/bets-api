@@ -2,7 +2,7 @@
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {Array.<{type: string, game_id: number, numbers: Array.<number>, price: number}>} Bets */
+/** @typedef {Array.<{type: string, game_id: number, numbers: Array.<number>}>} Bets */
 
 /** @type {import('@adonisjs/lucid/src/Database')} */
 const Database = use('Database')
@@ -90,9 +90,7 @@ class PurchaseController {
   async validateBets(bets) {
     await this.startPossibleGames(bets)
 
-    const validateGame = await this.validateIfGamesExistsInDatabaseByGameId(
-      bets
-    )
+    const validateGame = this.validateIfGamesExistsInDatabaseByGameId(bets)
     const validateBetsRange = this.validateBetsRangeAndMaxNumber(bets)
 
     return [...validateGame, ...validateBetsRange]
@@ -105,7 +103,7 @@ class PurchaseController {
    * @param {Bets} bets
    * @returns {Array}
    */
-  async validateIfGamesExistsInDatabaseByGameId(bets) {
+  validateIfGamesExistsInDatabaseByGameId(bets) {
     const isValid = bets.reduce((acc, bet, index) => {
       if (
         this.possibleGames.rows.some(
