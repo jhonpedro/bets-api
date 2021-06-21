@@ -4,8 +4,8 @@
 const Model = use('Model')
 
 class Bet extends Model {
-  purchases() {
-    return this.belongsTo('App/Model/Purchase')
+  purchase() {
+    return this.belongsTo('App/Models/Purchase')
   }
 
   game() {
