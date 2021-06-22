@@ -26,6 +26,7 @@ execute.stdout.on('data', (buffer) =>
 
 const { Ignitor } = require('@adonisjs/ignitor')
 
+// eslint-disable-next-line global-require
 new Ignitor(require('@adonisjs/fold'))
   .appRoot(__dirname)
   .fireHttpServer()
