@@ -21,7 +21,9 @@ class BetController {
    */
   async index({ auth }) {
     const bets = await Database.table('bets')
+      .select('games.type', 'games.color', 'games.price', 'bets.numbers')
       .innerJoin('purchases', 'bets.purchase_id', 'purchases.id')
+      .innerJoin('games', 'bets.game_id', 'games.id')
       .where('purchases.user_id', auth.user.id)
       .orderBy('bets.created_at', 'desc')
 
