@@ -1,42 +1,11 @@
-<style>
-  * {
-    padding: 0;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .welcome, .presentation {
-    margin-top: 20px;
-  }
-
-  .welcome {
-    display: block;
-    text-align: center;
-    font-size: 25px;
-  }
-
-  .presentation {
-    width: 50%;
-    border: 1px solid rgba(0,0,0,0.1);
-    background-color: #bed4ff;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 0 auto;
-  }
+@include('partials.base_layout')
+<div class="container">
+  <strong class="title">Welcome {{name}}, we are happy to have you here!</strong>
   
-  @media (max-width: 768px){
-    .presentation {
-      width: 95%;
-      padding: 0 20px;
-    }
-  }
-</style>
-
-<strong class="welcome">Welcome {{name}}, we are happy to have you here!</strong>
-
-<p class="presentation">
-  <strong>Congratulations!</strong> You have just created your account in the TGL, The Greates App For Bets!!
-  <br>
-  <br>
-  Now you can create some bets! Let's go!!
-</p>
+  <p>
+    <strong>Congratulations!</strong> You have just created your account in the TGL, The Greates App For Bets!!
+    <br>
+    <br>
+    Now you can create some bets! Let's go!!
+  </p>
+</div>
