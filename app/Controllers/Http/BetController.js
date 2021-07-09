@@ -26,7 +26,8 @@ class BetController {
         'games.type',
         'games.color',
         'games.price',
-        'bets.numbers'
+        'bets.numbers',
+        'purchases.created_at'
       )
       .innerJoin('purchases', 'bets.purchase_id', 'purchases.id')
       .innerJoin('games', 'bets.game_id', 'games.id')
