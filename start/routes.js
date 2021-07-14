@@ -19,6 +19,7 @@ const Route = use('Route')
 Route.group(() => {
   Route.post('/', 'UserController.store').validator('StoreUser')
   Route.get('/', 'UserController.show').middleware(['auth'])
+  Route.put('/', 'UserController.update').middleware(['auth'])
 }).prefix('/users')
 
 Route.post('/session', 'SessionController.store').validator('StoreSession')
